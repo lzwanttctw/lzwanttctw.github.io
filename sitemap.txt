@@ -1,0 +1,8 @@
+http://example.com/2022/07/14/QT%E7%BC%96%E8%AF%91MYSQL%E9%A9%B1%E5%8A%A8/
+http://example.com/tags/index.html
+http://example.com/about/index.html
+http://example.com/link/index.html
+http://example.com/categories/index.html
+http://example.com/
+http://example.com/tags/QT/
+http://example.com/categories/QT/
