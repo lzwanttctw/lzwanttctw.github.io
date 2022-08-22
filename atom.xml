@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-08-22T11:32:47.735Z</updated>
+  <updated>2022-08-22T11:51:06.135Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从0开始的汇编语言（四）</title>
+    <link href="http://example.com/2022/08/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>http://example.com/2022/08/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <published>2022-08-22T11:50:17.000Z</published>
+    <updated>2022-08-22T11:51:06.135Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从0开始的汇编语言系列，选用的参考书籍是清华大学出版社，王爽老师的《汇编语言第四版》。该系列属于博主的笔记系列，文中会采用一些书中的例子，图片以及思考题供读者阅读，如需详细学习汇编语言可以购入一本，谢谢。</p><p>学习之前我们做如下规定：</p><ol><li>十六进制数均以H结尾</li><li>使用8086CPU作为案例</li></ol><p>话不多说我们马上开始。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;从0开始的汇编语言系列，选用的参考书籍是清华大学出版社，王爽老师的《汇编语言第四版》。该系列属于博主的笔记系列，文中会采用一些书中的例子，图</summary>
+      
+    
+    
+    
+    <category term="Assembly Language" scheme="http://example.com/categories/Assembly-Language/"/>
+    
+    
+    <category term="Assembly Language" scheme="http://example.com/tags/Assembly-Language/"/>
+    
+  </entry>
   
   <entry>
     <title>从0开始的汇编语言（三）</title>
