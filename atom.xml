@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-03T11:44:09.541Z</updated>
+  <updated>2022-10-05T07:54:59.870Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux剑法（第一式）</title>
+    <link href="http://example.com/2022/10/04/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%80%E5%BC%8F%EF%BC%89/"/>
+    <id>http://example.com/2022/10/04/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%80%E5%BC%8F%EF%BC%89/</id>
+    <published>2022-10-04T05:39:16.000Z</published>
+    <updated>2022-10-05T07:54:59.870Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="为什么要习得此剑法？"><a href="#为什么要习得此剑法？" class="headerlink" title="为什么要习得此剑法？"></a>为什么要习得此剑法？</h1><p>当今世界，强者纵横，Linux被广泛使用，自掌门Linus Benedict Torvalds开宗立派之后，便将此剑法广布天下，如今也成为了晋升强者道路上的一门必修功法。Linux安全性高，内核稳定，具有完善的开发和调试工具，如今Linux也被广泛的使用在超级计算机、服务器、PC机、手机、嵌入式系统中，尤其是服务器开发，此剑法可谓上乘之选。而且我们未来学习其他功法，可能也需要懂得此套剑法。少侠，何不现在开始？</p><h1 id="工欲善其事，必先利其器"><a href="#工欲善其事，必先利其器" class="headerlink" title="工欲善其事，必先利其器"></a>工欲善其事，必先利其器</h1><p>在学习剑法之前，必然是选择一柄上好的武器，恰好，我这里有京中著名工匠所铸的长剑剑柄<a href="https://download3.vmware.com/software/WKST-1624-WIN/VMware-workstation-full-16.2.4-20089737.exe">VMware</a>，剑刃<a href="https://pan.baidu.com/s/1u0tuBRRYBqOgHEloVUJ4xA?pwd=whmk">centOS7</a>，还有一个密匙ZF3R0-FHED2-M80TY-8QYGC-NPKYF，一并赠与少侠，但。。。还需要少侠亲自组装一下。不用担心，我给少侠带来了安装说明书，如下：</p><p>1.取出VMware，安装在我们的电脑上，如果你直接安装成功可以去看第二步了，如果你没安装成功，可能是需要开启CPU虚拟化，开启虚拟化首先要根据你的电脑型号上网查找按哪个键进入BIOS，然后重启电脑，在重启的过程中狂按那个键，待进入BIOS界面后进入BIOS后，找到Configuration，选择Intel Virtual Technology（或AMD Virtual Technology）按回车，将光标移至Enabled，然后再回车，最后按F10保存并退出。</p><p>2.安装好VMware后，我们要将centOS7映像文件下载下来。</p><p>3.打开VMware，点击创建新的虚拟机，依次执行下列操作，选中典型、下一步、选中稍后安装操作系统、下一步、选中Linux、在版本的下拉菜单中选择Red Hat Enterprise Linux 7 64位、下一步、为你的剑取一个心仪的名字、选择放在一个喜欢的位置、下一步、下一步。</p><p>4.点击自定义硬件，选择处理器，这个时候我们要先确定自己电脑有几个CPU，总共有几个内核，我们点开任务管理器，点击性能，点击打开资源监视器，我们可以看到一个进程栏和一个任务栏，这证明我们的电脑有两个CPU，把右边拉到最下面可以看到一个CPU15，这证明我们总共有16个内核，也就是一个CPU有8个内核。所以我们可以选择分配给虚拟机2个CPU，每一个CPU分配4个内核，毕竟我们还要给母机本身留一点内核，这样我们就分配给虚拟机了2个CPU和总共8个内核。</p><p><img src="1.jpg" alt="资源监视器"></p><p>5.点击关闭、完成，右键新建好的虚拟机，点击设置，点击CD/DVD，选择使用ISO映像文件，选中下载好的centOS7映像文件，点击确定。</p><p>6.开启创建好的虚拟机，选中Install CentOS7，回车。</p><p><img src="2.jpg" alt="安装CentOS7"></p><p>7.进入之后我们选择中文，点击软件选择，按照下图选择配置，点击完成。</p><p><img src="3.jpg" alt="配置选择"></p><p>8.点击安装位置，选择我要配置分区，点击完成，我们最开始分配给了虚拟机一共20G的内存，现在我们要对这20G内存进行分区，点击加号，添加/boot分区1G，/swap分区2G，/分区17G。将三个分区的设备类型更改为标准分区，将/boot分区和/分区文件系统修改为ext4。</p><p><img src="4.jpg" alt="内存分区"></p><p>9.点开网络和主机名，开启网络连接，点击完成</p><p>10.之后我们开始安装，这个过程中我们可以设置Root密码，创建一个新的用户，因为Linux主张使用普通用户登录，当然你也可以在登录界面点击未登录，输入用户名Root和Root密码登录。安装结束后重启虚拟机，同意许可信息。</p><p>至此安装过程完毕，少侠得到了一柄好剑，江湖之旅即刻开始。</p><h1 id="网络连接的三种模式"><a href="#网络连接的三种模式" class="headerlink" title="网络连接的三种模式"></a>网络连接的三种模式</h1><p><img src="5.jpg" alt="网络连接"></p><p>这一小段，我们认识一下网络的三种连接方式，分别是桥接模式，NAT模式，仅主机模式。首先我们根据图片可以知道，主机A、B、C都处在一个网段之中，所以他们之间可以相互通讯。</p><p>主机A的虚拟机采用的是桥接模式，所以虚拟机和主机处于同一网段，故此A的虚拟机可以和外界比如B的主机，相互连通。但是这样的连通方式存在一个问题，我们要知道，在一个网段中，只能存在255个IP。所以一旦有大量的主机创建了虚拟机，并且选用了桥接模式，就会造成IP冲突。</p><p>我们再看C，C主机的虚拟机是NAT模式，C主机上会生成一个对应的虚拟IP地址(如192.168.100.66 )，虚拟机的IP会和对应的虚拟IP地址相互通讯，C主机的虚拟机IP通过C主机的IP代理来与外部网络通讯，在内网和外网通讯的同时，外网与内网不在同一个网段中。但内网和外网的通讯是单向的，也就是虚拟机网络可以和外网沟通，但外网无法和虚拟机网络沟通。</p><p>最后，仅主机模式就是一个独立的系统，和外部不发生通讯。</p><h1 id="虚拟机克隆"><a href="#虚拟机克隆" class="headerlink" title="虚拟机克隆"></a>虚拟机克隆</h1><p>当我们已经安装了一个Linux系统了，但因为种种原因，我们还需要更多的系统，我们就可以使用虚拟机克隆，我们可以直接使用VMware的克隆操作。注意，在克隆的时候要先关闭Linux系统。</p><p><img src="6.jpg" alt="虚拟机克隆"></p><p>我们右键安装好的Linux系统，找到管理、克隆，之后下一步即可。当然这里面还有一个要注意的地方那就是链接克隆和完整克隆。</p><p><img src="7.jpg" alt="链接克隆和完整克隆"></p><p>链接克隆的意思就好比创建一个引用，我们点击开启连接克隆后的系统和原系统是一样的，只不过我们给原系统起了一个别名。完整克隆的意思是我们真真正正的克隆一个独立的系统和原系统没有瓜葛。</p><h1 id="虚拟机快照"><a href="#虚拟机快照" class="headerlink" title="虚拟机快照"></a>虚拟机快照</h1><p>当我们在虚拟机中进行操作的时候，可能会有一些危险操作可能会导致系统崩溃，这个时候我们可以使用虚拟机快照，如果系统崩溃可以快速的将Linux系统恢复到我们拍摄快照的时间点。我们右键点击系统，找到快照，点击拍摄快照，这样我们就建立好了一个快照。当我们未来需要恢复的时候可以选择快照管理器，选择回溯到某一个快照的时间节点。</p><p><img src="8.jpg" alt="虚拟机快照"></p><h1 id="虚拟机的迁移和删除"><a href="#虚拟机的迁移和删除" class="headerlink" title="虚拟机的迁移和删除"></a>虚拟机的迁移和删除</h1><p>我们知道虚拟系统在我们主机里面本质上就是一个文件，所以虚拟机的迁移只需要把安装好的虚拟系统这个文件夹整体拷贝或者剪切到目的地即可，删除也很简单只需要在VMware中点击菜单，点击从磁盘中删除即可，或者我们可以直接删除虚拟系统的文件夹，当然如果你选择在VMware中删除虚拟机，要记得先把虚拟机关掉。注意，VMware中的移除，只是将虚拟系统的指向从列表中移除了并不是真正的将虚拟系统从硬盘中删除了。</p><p><img src="9.jpg" alt="虚拟机删除"></p><h1 id="安装VMTools"><a href="#安装VMTools" class="headerlink" title="安装VMTools"></a>安装VMTools</h1><p>VMTools的安装可以让我们更好的在主机中管理VM虚拟机，可以设置Windows和CentOS的共享文件夹。安装方法也很简单，如下：</p><p>1.首先开启我们的Linux系统，点击上方选项卡中的虚拟机，点击安装VMTools或者再次安装VMTools，当然当你安装完虚拟系统后，在下方黄色提示条中会提示你安装VMTools，点击那个安装也可以。</p><p><img src="10.jpg" alt="安装VMTools(1)"></p><p>2.之后我们在Linux的桌面上可以看到一个光盘图标，叫做VMware Tools，我们双击打开</p><p><img src="11.jpg" alt="安装VMTools(2)"></p><p>3.打开后我们可以看到一个压缩文件xx.tar.gz，我们将它拷贝到/opt下（点击其他位置，点击计算机就可以找到opt啦，如果你无法粘贴到/opt下可能是因为你的权限不够需要使用root登录，如果还不可以那粘贴到主文件夹也是可以的）</p><p>4.接下来我们右键点击Linux桌面，打开终端依次输入如下指令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /opt    [cd指令的意义是进入一个文件夹中，这里只需要进入xx.tar.gz所在文件夹即可]</span><br><span class="line">tar -zxvf xx.tar.gz (根据你的文件名填写，可以输入VM然后按tab键自动补全)</span><br><span class="line">cd vm(按tab自动补全)</span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure><p>之后只要一直按回车，全都使用默认设置即可。</p><p>安装好VMTools后我们来设置共享文件夹，首先我们在Windows系统下找一个地方建立好我们用来共享的文件夹。之后我们右键我们的虚拟系统点击设置，在上方选择选项，点击共享文件夹，点击总是启用，点击添加，添加完成后点击确定即可。之后我们回到Linux中点击其他位置点击计算机点击mnt文件夹，点击hgfs，就可以看到我们的共享文件夹啦。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;为什么要习得此剑法？&quot;&gt;&lt;a href=&quot;#为什么要习得此剑法？&quot; class=&quot;headerlink&quot; title=&quot;为什么要习得此剑法？&quot;&gt;&lt;/a&gt;为什么要习得此剑法？&lt;/h1&gt;&lt;p&gt;当今世界，强者纵横，Linux被广泛使用，自掌门Linus Benedict</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>从0开始的汇编语言（十七）</title>
