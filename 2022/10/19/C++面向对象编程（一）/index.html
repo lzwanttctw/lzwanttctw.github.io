@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>C++面向对象编程（一） | liuzheng's blog</title><meta name="keywords" content="C++"><meta name="author" content="liu zheng"><meta name="copyright" content="liu zheng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言欢迎，各位来到C++面向对象编程的学习，相信各位已经学习过C语言，已经进入到了程序的世界，本课程要求一些c++的基础知识，比如控制流程，循环，指针，引用等等概念，如果清楚可以B站搜索黑马程序员的C++课程，本系列基于侯捷老师的C++课程，为大家讲解C++面向对象的一些知识，同时规范一下程序的书写，事不宜迟，我们马上开始！ 面向过程？面向对象？相信各位，在学习C的过程中，一定已经动手写了很多程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面向对象编程（一）">
+<meta property="og:url" content="http://example.com/2022/10/19/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="liuzheng&#39;s blog">
+<meta property="og:description" content="前言欢迎，各位来到C++面向对象编程的学习，相信各位已经学习过C语言，已经进入到了程序的世界，本课程要求一些c++的基础知识，比如控制流程，循环，指针，引用等等概念，如果清楚可以B站搜索黑马程序员的C++课程，本系列基于侯捷老师的C++课程，为大家讲解C++面向对象的一些知识，同时规范一下程序的书写，事不宜迟，我们马上开始！ 面向过程？面向对象？相信各位，在学习C的过程中，一定已经动手写了很多程序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.oschina.net%2Fuploads%2Fimg%2F201304%2F12074733_81Xw.jpg&refer=http%3A%2F%2Fstatic.oschina.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668751513&t=af01ea44597aa8d7fde5914d76f51af2">
+<meta property="article:published_time" content="2022-10-19T05:33:08.000Z">
+<meta property="article:modified_time" content="2022-10-19T13:48:39.461Z">
+<meta property="article:author" content="liu zheng">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.oschina.net%2Fuploads%2Fimg%2F201304%2F12074733_81Xw.jpg&refer=http%3A%2F%2Fstatic.oschina.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668751513&t=af01ea44597aa8d7fde5914d76f51af2"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/19/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++面向对象编程（一）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2022-10-19 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="liuzheng's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic3.zhimg.com/80/v2-4b4538487fa02ff9c7212b1557ca4a08_720w.jpg?source=1940ef5c" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://static.runoob.com/images/mix/3DF91CB4-0A60-444F-971D-88A58C4EDBFD.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">liuzheng's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++面向对象编程（一）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-19T05:33:08.000Z" title="发表于 2022-10-19 13:33:08">2022-10-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-19T13:48:39.461Z" title="更新于 2022-10-19 21:48:39">2022-10-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/">C++</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C++面向对象编程（一）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>欢迎，各位来到C++面向对象编程的学习，相信各位已经学习过C语言，已经进入到了程序的世界，本课程要求一些c++的基础知识，比如控制流程，循环，指针，引用等等概念，如果清楚可以B站搜索黑马程序员的C++课程，本系列基于侯捷老师的C++课程，为大家讲解C++面向对象的一些知识，同时规范一下程序的书写，事不宜迟，我们马上开始！</p>
+<h1 id="面向过程？面向对象？"><a href="#面向过程？面向对象？" class="headerlink" title="面向过程？面向对象？"></a>面向过程？面向对象？</h1><p>相信各位，在学习C的过程中，一定已经动手写了很多程序了，我们通过写各种函数然后分析事物的指令步骤，依次调用相应的函数去解决问题，这样的操作有一个专有名词叫做面向过程编程，而面向对象编程，从过程中跳出来，将问题处理成转变成一个一个对象，通过对象去做一个行为进而解决问题。可能有的小伙伴还是有点晕，没关系我们举一个例子，写一个五子棋程序：</p>
+<p>面向过程的设计思路就是首先分析问题的步骤：</p>
+<p>1、开始游戏，2、黑子先走，3、绘制画面，4、判断输赢，5、轮到白子，6、绘制画面，7、判断输赢，8、返回步骤2，9、输出最后结果。</p>
+<p>面向对象的设计则是从事件中各个角色的行为出发来解决问题。</p>
+<p>整个五子棋可以分为1、黑白双方，这两方的行为是一模一样的，2、棋盘系统，负责绘制画面，3、规则系统，负责判定诸如犯规、输赢等。他们只需要执行自己的行为就可以解决问题。</p>
+<p>可以明显地看出，面向对象是以功能来划分问题，而不是步骤。</p>
+<p>当然我们并不是说面向对象优于面向过程，只是在不同的场合我们选择最为合适的设计。面向过程的性能比较高，面向对象的维护性，复用性，扩展性强。我们要根据场合有选择的使用。</p>
+<h1 id="C-代码的基本形式"><a href="#C-代码的基本形式" class="headerlink" title="C++代码的基本形式"></a>C++代码的基本形式</h1><p>我们在编写代码的时候，建议分文件编写代码，这样的将各个功能模块化可以大大的方便代码的维护、扩展等等。</p>
+<p>我们通常会将我们的类声明写在一个头文件中，其余实现写在另一个cpp中，当我们需要这个类的时候，我们只需要在主文件中使用#include即可使用我们写好的类。我们在编写一个头文件的时候，要记得写防御式声明，这样可以有效地避免头文件被多次引用的问题。防御式声明的语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _头文件名称(大写)_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _头文件名称(大写)_</span></span><br><span class="line">……</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">或者</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="面向对象——类"><a href="#面向对象——类" class="headerlink" title="面向对象——类"></a>面向对象——类</h1><p>在学会面向对象之前，我们要先知道什么是类，可能有的小伙伴会疑问类是什么？为什么面向对象编程要知道类？其实类和对象的关系密不可分，我们举一个例子，这天下的每一个人都是一个对象，我们有各自的名字，各自的性别等等属性，我们也都可以吃饭，可以学习等等，这个被叫做行为(方法)，所以我们将所有人抽象成人类，人类有名字，有性别这些属性，也有吃饭，学习这些行为。所以类就是我们根据实际抽象出来的拥有属性和行为的一个整体，而对象就是由类产出的个例。这就引出了面向对象的第一大特征：“抽象”。我们要学习如何抽象出一个类。类的基本语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">classname</span>             <span class="comment">//这被称为class head</span></span><br><span class="line">&#123;							<span class="comment">//从此向下</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">classname</span>();</span><br><span class="line">	<span class="function">type <span class="title">functionname1</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">    <span class="function">type <span class="title">functionname2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">type <span class="title">functionname3</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    operate+(classname b)&#123; <span class="keyword">this</span>-&gt;属性<span class="number">1</span> += b.属性<span class="number">2</span>; &#125;</span><br><span class="line">	……</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> type <span class="title">functionname4</span><span class="params">()</span></span>;</span><br><span class="line">	type 属性<span class="number">1</span>;</span><br><span class="line">	type 属性<span class="number">2</span>;</span><br><span class="line">	……</span><br><span class="line">&#125;;							<span class="comment">//从此向上称为class body</span></span><br><span class="line"><span class="function"><span class="keyword">friend</span> type <span class="title">functionname4</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以在类内完成函数的实现，也可以在类内声明，类外实现。声明好类以后我们就可以像使用其他基本数据类型一样声明一个对象了。</p>
+<h1 id="inline-内联函数"><a href="#inline-内联函数" class="headerlink" title="inline 内联函数"></a>inline 内联函数</h1><p>如果你看过从0开始的汇编语言系列，那么你应该知道函数调用的一个过程是什么样子的，实际上函数调用是main函数将CPU的控制权转交给函数，自己停止运行，待函数运行完成将CPU的控制权返回给main函数后，main继续运行。如果函数内容很多，那么这样的转交带来的时间占用可以忽略，但如果函数内容不多，那么程序运行的大部分时间都将被这种转交的过程所占用，所以为了消除函数调用的时空开销，C++ 提供一种提高效率的方法，即在编译时将函数调用处用函数体替换。这种在函数调用处直接嵌入函数体的函数称为内联函数。实际上类内完成实现的函数都是内联函数，而类外完成的函数不是内敛函数。当然一个函数到最后是否会成为inline函数，我们是不得而知的，我们只能在<strong>函数的定义</strong>前面加上inline关键字，建议编译器将这个函数当做inline函数，至于是否真的会被当做inline函数，编译器要结合程序的复杂程度来确认。</p>
+<h1 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h1><p>可能有的小伙伴已经注意到了，在类的声明中，我们使用了两个关键字public和private，这两个关键字的意思是公有和私有，公有代表可以在任何地方被访问到。私有表示只能在类内被访问。其实还有一种级别叫做protected，我们有序再来研究。</p>
+<p>我们一般将类中数据部分放在private下，这就引出了我们面向对象程序设计的第二大特征：“封装”，即隐藏对象的属性和实现细节，仅对外公开接口，控制在程序中属性的读和修改的访问级别，就像是电视遥控器，我们只需要知道按下音量up键可以使声音变大就好，不需要知道按下按键后到底发生了什么使得音量变大。</p>
+<p>我们在程序设计中要秉承着封装的原则，比如我们将数据放到private下禁止外界随意访问，当外界需要访问或者修改的时候，我们可以对外提供get和set接口。</p>
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>不知道小伙伴有没有注意到，在上面类的格式中，我们有一个函数很特别它的名字和类名相同，但是没有返回值类型，这个函数会在我们声明一个对象的时候自动调用，这个函数叫做构造函数。</p>
+<p>我们看一个例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">classname</span>(type a=<span class="number">0</span>,type b=<span class="number">0</span>……):属性<span class="number">1</span>(a)，属性<span class="number">2</span>(b)……&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造函数有参数，我们可以在参数列表中对这些参数赋值让这些参数变成默认实参，默认实参的意思是当我们声明一个对象的时候，如果我们没有指定对象的属性值，那么就使用默认实参，我们可以看到后面的属性1(a)，这就代表了将a的值赋给属性1，如果我们没有指定a的值，那默认a为0，赋值给属性1，当然这种特殊的语法是构造函数独享的。我们在编写构造函数的时候，要注意将属性初始化。</p>
+<h1 id="重载函数"><a href="#重载函数" class="headerlink" title="重载函数"></a>重载函数</h1><p>当我们在写成员的行为的时候，我们希望一个行为可以对不同的事情做出不同应对，比如我们吃冰淇淋希望是用勺子挖着吃，吃饺子用筷子夹着吃等等。这个时候我们可以写多个函数比如EatIcecream()，EatDumpings()。但这样有一点麻烦，我们可以通过重载函数的方式解决，重载函数通常用来命名一组功能相似的函数，这样做减少了函数名的数量，避免了名字空间的污染，对于程序的可读性有很大的好处。<strong>重载函数要求函数名必须相同，但这些同名函数的指参数的个数、类型或者顺序至少有一个不同。</strong></p>
+<p>几乎所有函数都可以重载，包括构造函数，就比如我们之前写的那条构造函数，我们可以将它重载为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">classname</span>():属性<span class="number">1</span>(<span class="number">0</span>)，属性<span class="number">2</span>(<span class="number">0</span>)……&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这条代码表示，当我们声明一个对象时不可以指定属性，属性默认为0。编译器会根据我们声明对象的代码决定到底使用哪一个构造函数。</p>
+<h1 id="将构造函数放在private下"><a href="#将构造函数放在private下" class="headerlink" title="将构造函数放在private下"></a>将构造函数放在private下</h1><p>我们要考虑一个问题，我们之前说过private下的无论是属性还是行为都不可以被外界随意访问，但如果我们将构造函数放在了private下呢？我们还可以正常的声明一个对象吗？显然，这是不行的，当我们声明一个对象的时候我们就需要调用构造函数而构造函数被放在了private下不能被访问，那么也就无法创建对象。但这样做有什么意义吗？当然有，这在设计模式中被称为单例模式。比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> A&amp; <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		<span class="type">static</span> A a;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">void</span> <span class="built_in">setup</span>()&#123;……&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="built_in">A</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是一个经典的单例模式的例子，我们不允许外界声明处一个A类型的对象，我们在getInstance函数中声明一个A类型的对象并将它返回，当我们外界需要使用类A中的setup函数的时候我们可以这样调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A::getInstance().setup();</span><br></pre></td></tr></table></figure>
+
+<p>我们通过A作用域下的getInstance获得A类对象，然后使用setup函数。</p>
+<p>那么为什么要使用单例模式呢？</p>
+<p>首先单例模式节省公共资源，如果大家都要喝水，但是没必要每人家里都打一口井是吧，通常的做法是整个村里打一个井就够了，大家都从这个井里面打水喝。对应到我们计算机里面，像日志管理、打印机、数据库连接池、应用配置这一类事情都会使用单例模式。其次是单例模式方便控制就像日志管理，如果多个人同时来写日志，你一笔我一笔那整个日志文件都乱七八糟，如果想要控制日志的正确性，那么必须要对关键的代码进行上锁，只能一个一个按照顺序来写，而单例模式只有一个人来向日志里写入信息方便控制，避免了这种多人干扰的问题出现。</p>
+<h1 id="常量成员函数"><a href="#常量成员函数" class="headerlink" title="常量成员函数"></a>常量成员函数</h1><p>我们回过头看我们类声明那一部分的代码， 有一个函数后面有const标记，这代表着我这个函数将不会改变任何值，可能有人认为这种东西真的有必要吗？答案是肯定的，当我们在声明一个const的对象的时候，我们规定这个对象的属性不可以被更改，但如果我们调用了一个没有const标记的函数，无论我们这个函数是否修改了属性，编译器都会认为这个函数可能修改属性，这是不被允许的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v):<span class="built_in">age</span>(v) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function"><span class="type">const</span> A <span class="title">a</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	a.<span class="built_in">getage</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如这样的代码将会产生这样的错误：</p>
+<p><img src="1.jpg" alt="常量成员函数的必要"></p>
+<p>只要我们在getage()后面加上const就不会再报这样的错误了。</p>
+<h1 id="传值VS传引用"><a href="#传值VS传引用" class="headerlink" title="传值VS传引用"></a>传值VS传引用</h1><p>C++的函数参数传递方式，可以是传值方式，也可以是传引用方式。传值的本质是：形参是实参的一份复制。传引用的本质是：将我们要传的值所在的地址传输过去。</p>
+<p>当我们要传递一个很大的参数的时候，显然我们先复制再赋值最后再销毁的操作会浪费很多性能，这个时候传递引用显然更为合适。因为传递引用一次只是传输了四个字节。所以我们建议传递参数和返回一个参数的时候，我们多传引用，而不是传值。如果我们是追求速度，不希望我们传递的值被改变，我们可以为引用加上const加以约束。</p>
+<h1 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h1><p>在类的声明部分还有一个特殊的关键字值得我们关注，那就是friend，朋友，我们看这个函数直观的感觉它想表达的意思这个函数是这个类的friend，那么C++中的friend可以做什么呢？C++中的friend翻译过来叫做友元，被标记为友元的函数可以直接获取类中的属性。但这样做就打破了我们封装的原则，所以我们在写外部函数访问成员属性的时候，还是尽量的使用类内函数获取。</p>
+<h1 id="相同class的各个objects互为友元"><a href="#相同class的各个objects互为友元" class="headerlink" title="相同class的各个objects互为友元"></a>相同class的各个objects互为友元</h1><p>我们修改之前的代码来解释这一块的内容：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v):<span class="built_in">age</span>(v) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> <span class="type">const</span></span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">addage</span><span class="params">(A &amp;b)</span> </span>&#123; <span class="keyword">return</span> b.age + <span class="number">1</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">A <span class="title">a</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="function">A <span class="title">b</span><span class="params">(<span class="number">7</span>)</span></span>;</span><br><span class="line">	cout&lt;&lt;a.<span class="built_in">addage</span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们来看结果：</p>
+<p><img src="2.jpg" alt="相同class的各个objects互为友元"></p>
+<p>我们可以看到现在类A中有一个addage函数，它接收一个A类对象，并把接收到的对象的age+1返回，可能听起来很正常，但仔细想想我们之前说一个对象的私有属性是不可以被外部随意获取的，那为什么addage函数中可以直接写b.age+1呢？这不符合我们所说的封装啊，这时候就要使用到这一块内容的标题了相同class的各个objects互为友元。也就是说一个类产生出的对象们，都是友元的，也就是大家都是同源的，不存在什么隔阂。</p>
+<h1 id="关于返回引用或者返回值的取舍"><a href="#关于返回引用或者返回值的取舍" class="headerlink" title="关于返回引用或者返回值的取舍"></a>关于返回引用或者返回值的取舍</h1><p>当一个函数中需要使用一个新的变量去存储我们函数的结果的时候，我们一般选择返回值。我们在函数中创建的变量，如果我们返回了它的引用可能会造成程序的错误，我们来看这样一段代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span>&amp; <span class="title">RetInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;=======&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span>&amp; i = <span class="built_in">RetInt</span>();</span><br><span class="line">    cout &lt;&lt; i&lt;&lt;endl;</span><br><span class="line">    cout &lt;&lt; &amp;i &lt;&lt; endl;</span><br><span class="line">    <span class="comment">//split();</span></span><br><span class="line">    cout &lt;&lt; i&lt;&lt;endl;</span><br><span class="line">    cout &lt;&lt; &amp;i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码中RetInt函数返回了i的引用但i是一个局部变量，这个操作是十分危险的，我们来看一下结果：</p>
+<p><img src="3.jpg" alt="返回局部变量的引用1"></p>
+<p>看起来并没有很危险，i的值还是那个值，i的地址还是那个地址看起来没什么不妥，但是如果我们取消注释main函数中的split函数会发生什么呢？我们再看一下结果：</p>
+<p><img src="4.jpg" alt="返回局部变量的引用2"></p>
+<p>i的地址没有发生改变，但是i的值却变得很糟糕，这是为什么？这里要先理解函数调用的过程，我们说调用一个函数要先将函数压入栈中，然后待函数执行完成后弹栈，但这里要注意的是不要把弹栈想象成将函数从栈中移出，弹栈的意思只是栈顶指针向下移动而已，函数还是在栈中，还是那个地址。所以我们在没有另外压入别的函数前，我们都可以正常的访问到局部变量的引用，但是一旦我们重新压入了一个函数，那么我们后压入的函数将覆盖我们原先的函数，这样原先函数里的局部变量将消失，这样我们就没有办法访问到了。所以不要返回一个局部变量的引用，指针同理。</p>
+<h1 id="运算符重载和this指针"><a href="#运算符重载和this指针" class="headerlink" title="运算符重载和this指针"></a>运算符重载和this指针</h1><p>我们可以将两个int相加，当两个数据类型可以转换的时候，我们也可以让它们相加，但如果我们让两个对象相加呢？我们可以写一个行为，它的参数列表是另一个对象，这样当我调用这个行为的时候就可以实现两个对象的相加，但这太麻烦了我们为什么不能用+将两个对象加在一起呢？接下来我们就来看看类声明部分的另一个新鲜事物operate运算符重载，以及它用到的this指针。在C++中我们可以使用operate进行运算符重载，我们赋予这个运算符新的功能，比如下面这些代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v):<span class="built_in">age</span>(v) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> <span class="type">const</span></span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line">	<span class="type">void</span> <span class="keyword">operator</span> + (A &amp;b) &#123; <span class="keyword">this</span>-&gt;age += b.age; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">A <span class="title">a</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="function">A <span class="title">b</span><span class="params">(<span class="number">7</span>)</span></span>;</span><br><span class="line">	a + b;</span><br><span class="line">	cout &lt;&lt; a.<span class="built_in">getage</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们看一下它的结果：</p>
+<p><img src="5.jpg" alt="运算符重载和this指针"></p>
+<p>当我们使用a+b的时候，编译器根据我们的参数类型调用了我们重载之后的+，执行重载+里面的操作，这里有一个新的关键字this，this是一个指针，它指向了当前这个对象本身，我们调用的语句是a+b，那么此时this指向的就是a。所以我们执行的操作就是将a的age加上b的age赋给a的age。所以我们得到了结果17。</p>
+<h1 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h1><p>现在我们思考这样的一个问题，我们现在有三个A类数据，我们要将它们三个加在一起，我们要怎么做呢？可能有的小伙伴认为我们可以直接a+b+c，我们来看一下这样子可以不可以：</p>
+<p><img src="6.jpg" alt="链式编程1"></p>
+<p>看来是不可以的，因为我们重载的+运算符没有返回任何东西，我们不能将一个空的东西和类相加，所以我们需要修改重载+运算符的返回值才可以，我们来看优化后的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v):<span class="built_in">age</span>(v) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line">	A&amp; <span class="keyword">operator</span> + (A&amp; another)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;age += another.age;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">A <span class="title">a</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="function">A <span class="title">b</span><span class="params">(<span class="number">7</span>)</span></span>;</span><br><span class="line">	<span class="function">A <span class="title">c</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">	a + b + c;</span><br><span class="line">	cout &lt;&lt; a.<span class="built_in">getage</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="7.jpg" alt="链式编程2"></p>
+<p>我们得到了正确的结果，这样返回一个对象加入下一次运算的方法我们叫做链式编程，像一个链条一样。运算符重载符合基本的运算规律。</p>
+<h1 id="属于全局函数的运算符重载"><a href="#属于全局函数的运算符重载" class="headerlink" title="属于全局函数的运算符重载"></a>属于全局函数的运算符重载</h1><p>我们知道+是一个双目运算符，它需要两个参数，但是在类中我们本身就是其中一个参数，所以我们的参数列表只有一个值，现在我们将重载运算符搬到类外，变成一个全局函数，这个时候我们的参数列表就应该是两个参数了，我们来看代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v=<span class="number">1</span>):<span class="built_in">age</span>(v) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line">A <span class="keyword">operator</span> + (A&amp; one,A&amp; another)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">A</span>(one.<span class="built_in">getage</span>() + another.<span class="built_in">getage</span>());</span><br><span class="line">&#125;</span><br><span class="line">A <span class="keyword">operator</span> + (A&amp; one, <span class="type">int</span> a)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">A</span>(one.<span class="built_in">getage</span>() + a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A a,b,c,d;</span><br><span class="line">	c = a + b;</span><br><span class="line">	cout &lt;&lt; c.<span class="built_in">getage</span>() &lt;&lt; endl;</span><br><span class="line">	c = a + <span class="number">10</span>;</span><br><span class="line">	cout &lt;&lt; c.<span class="built_in">getage</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们在重载+中使用了一种语法，classname()，这样我们就创建了一个临时的对象，并用两个对象相加得到的值初始化了它，把它返回回来，这里要注意的是我们不是重载+=符号，我们没有空间去存放两个对象相加的值所以只能创建一个新的对象，将它返回回来，这就意味着我们不能返回引用，同时也意味着如果我们希望实现链式编程，那我们的参数列表中要求的参数也要是以值传递的。最后运算符可以发生多次重载，和函数重载相同，要求的是重载同一运算符，但参数列表中参数顺序，参数类型，参数个数(重载加号和正号的区别)至少有一个不同。</p>
+<h1 id="重载输出运算符-lt-lt"><a href="#重载输出运算符-lt-lt" class="headerlink" title="重载输出运算符&lt;&lt;"></a>重载输出运算符&lt;&lt;</h1><p>我们如果需要输出一个类的时候我们可以通过使用类提供的接口来输出，但是如果这个类的属性有很多那我们就要一条一条的输出，很麻烦，所以我们可以重载输出运算符&lt;&lt;来解决这个问题。我们直接看代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> v = <span class="number">18</span>, string n = <span class="string">&quot;xiaoming&quot;</span>) :<span class="built_in">age</span>(v),<span class="built_in">name</span>(n) &#123;&#125;</span><br><span class="line">	<span class="function">string <span class="title">getname</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getage</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> age; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	string name;</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line">ostream&amp; <span class="keyword">operator</span> &lt;&lt; (ostream&amp; os,A&amp; another)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> os&lt;&lt; another.<span class="built_in">getname</span>() &lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt; another.<span class="built_in">getage</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A a;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意几件事，第一件事是重载&lt;&lt;运算符不能写成一个成员函数，想象一下如果&lt;&lt;成为了成员函数，当我们调用的时候应该是classexample1&lt;&lt;classexample2，这显然不符合我们的预期，我们要的效果是cout&lt;&lt;classexample。所以不可以将重载&lt;&lt;运算符写成一个成员函数，我们要将cout置于&lt;&lt;的左边，所以我们的第一个参数应该是和cout同一类型的，我们查阅资料得知cout的类型为ostream，所以为了实现链式编程，我们返回的类型也是一个ostream类型的引用。</p>
+<p>我们来看一下程序运行的结果：</p>
+<p><img src="8.jpg" alt="链式编程2"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">liu zheng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/19/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">http://example.com/2022/10/19/C++面向对象编程（一）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">liuzheng's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.oschina.net%2Fuploads%2Fimg%2F201304%2F12074733_81Xw.jpg&amp;refer=http%3A%2F%2Fstatic.oschina.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1668751513&amp;t=af01ea44597aa8d7fde5914d76f51af2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/17/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E5%85%AD%E5%BC%8F%EF%BC%89/"><img class="next-cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux剑法（第六式）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic3.zhimg.com/80/v2-4b4538487fa02ff9c7212b1557ca4a08_720w.jpg?source=1940ef5c" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">liu zheng</div><div class="author-info__description">刘峥</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lzwanttctw" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:liuzhengtctw@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/20370023" target="_blank" title="bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://i.postimg.cc/HWQKSV26/74106108648aa0649c53a7c1599dbd3.jpg" target="_blank" title="weixin"><i class="fab fa-weixin"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=2942185796&amp;website=www.oicqzone.com" target="_blank" title="qq"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果阅读过程中遇到了问题，请及时评论或者留言，看到了会在第一时间给出回复。若未收到回复，可以加博主vx，方便日后咨询，加以技术讨论。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%EF%BC%9F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">面向过程？面向对象？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E4%BB%A3%E7%A0%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">C++代码的基本形式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">面向对象——类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#inline-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">inline 内联函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E7%BA%A7%E5%88%AB"><span class="toc-number">6.</span> <span class="toc-text">访问级别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">重载函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%94%BE%E5%9C%A8private%E4%B8%8B"><span class="toc-number">9.</span> <span class="toc-text">将构造函数放在private下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text">常量成员函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E5%80%BCVS%E4%BC%A0%E5%BC%95%E7%94%A8"><span class="toc-number">11.</span> <span class="toc-text">传值VS传引用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-number">12.</span> <span class="toc-text">友元函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%90%8Cclass%E7%9A%84%E5%90%84%E4%B8%AAobjects%E4%BA%92%E4%B8%BA%E5%8F%8B%E5%85%83"><span class="toc-number">13.</span> <span class="toc-text">相同class的各个objects互为友元</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%94%E5%9B%9E%E5%BC%95%E7%94%A8%E6%88%96%E8%80%85%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-number">14.</span> <span class="toc-text">关于返回引用或者返回值的取舍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E5%92%8Cthis%E6%8C%87%E9%92%88"><span class="toc-number">15.</span> <span class="toc-text">运算符重载和this指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">16.</span> <span class="toc-text">链式编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%9E%E4%BA%8E%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">17.</span> <span class="toc-text">属于全局函数的运算符重载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6-lt-lt"><span class="toc-number">18.</span> <span class="toc-text">重载输出运算符&lt;&lt;</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/19/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" title="C++面向对象编程（一）"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.oschina.net%2Fuploads%2Fimg%2F201304%2F12074733_81Xw.jpg&amp;refer=http%3A%2F%2Fstatic.oschina.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1668751513&amp;t=af01ea44597aa8d7fde5914d76f51af2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++面向对象编程（一）"/></a><div class="content"><a class="title" href="/2022/10/19/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" title="C++面向对象编程（一）">C++面向对象编程（一）</a><time datetime="2022-10-19T05:33:08.000Z" title="发表于 2022-10-19 13:33:08">2022-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/17/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E5%85%AD%E5%BC%8F%EF%BC%89/" title="Linux剑法（第六式）"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux剑法（第六式）"/></a><div class="content"><a class="title" href="/2022/10/17/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E5%85%AD%E5%BC%8F%EF%BC%89/" title="Linux剑法（第六式）">Linux剑法（第六式）</a><time datetime="2022-10-17T11:58:15.000Z" title="发表于 2022-10-17 19:58:15">2022-10-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/14/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%BA%94%E5%BC%8F%EF%BC%89/" title="Linux剑法（第五式）"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux剑法（第五式）"/></a><div class="content"><a class="title" href="/2022/10/14/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%BA%94%E5%BC%8F%EF%BC%89/" title="Linux剑法（第五式）">Linux剑法（第五式）</a><time datetime="2022-10-14T04:55:02.000Z" title="发表于 2022-10-14 12:55:02">2022-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E5%9B%9B%E5%BC%8F%EF%BC%89/" title="Linux剑法（第四式）"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux剑法（第四式）"/></a><div class="content"><a class="title" href="/2022/10/12/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E5%9B%9B%E5%BC%8F%EF%BC%89/" title="Linux剑法（第四式）">Linux剑法（第四式）</a><time datetime="2022-10-12T09:37:52.000Z" title="发表于 2022-10-12 17:37:52">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%89%E5%BC%8F%EF%BC%89/" title="Linux剑法（第三式）"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux剑法（第三式）"/></a><div class="content"><a class="title" href="/2022/10/09/Linux%E5%89%91%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%89%E5%BC%8F%EF%BC%89/" title="Linux剑法（第三式）">Linux剑法（第三式）</a><time datetime="2022-10-09T12:07:26.000Z" title="发表于 2022-10-09 20:07:26">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://static.runoob.com/images/mix/3DF91CB4-0A60-444F-971D-88A58C4EDBFD.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 By liu zheng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">半山腰总是最挤的，你得去山顶看看。<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'M4HnCHqwI8V007LMAwy1AXOC-gzGzoHsz',
+      appKey: 'N2NNh2Ahgn18g90Q244XUdc2',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
