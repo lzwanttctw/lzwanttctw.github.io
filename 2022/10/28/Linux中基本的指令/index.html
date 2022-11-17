@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux中基本的指令 | liuzheng's blog</title><meta name="keywords" content="Linux"><meta name="author" content="liu zheng"><meta name="copyright" content="liu zheng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一切皆文件Linux讲究的是一切皆文件，在Windows下是文件的东西，在Linux中也是，在Windows下不是文件的东西，比如套接字，进程，甚至是硬件设备，在Linux下还是文件，你可以通过访问文件的方式来获取它们的信息，所以说要记住Linux下一切皆文件。 目录结构 Linux目录结构十分重要，要熟练的掌握。接下来我们来看一看这些目录都是用来做什么的：  &#x2F;bin：bin是Binaries(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux中基本的指令">
+<meta property="og:url" content="http://example.com/2022/10/28/Linux%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="liuzheng&#39;s blog">
+<meta property="og:description" content="一切皆文件Linux讲究的是一切皆文件，在Windows下是文件的东西，在Linux中也是，在Windows下不是文件的东西，比如套接字，进程，甚至是硬件设备，在Linux下还是文件，你可以通过访问文件的方式来获取它们的信息，所以说要记住Linux下一切皆文件。 目录结构 Linux目录结构十分重要，要熟练的掌握。接下来我们来看一看这些目录都是用来做什么的：  &#x2F;bin：bin是Binaries(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img0.baidu.com/it/u=2296607214,1927394135&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+<meta property="article:published_time" content="2022-10-28T05:10:56.000Z">
+<meta property="article:modified_time" content="2022-11-15T06:23:58.462Z">
+<meta property="article:author" content="liu zheng">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img0.baidu.com/it/u=2296607214,1927394135&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/28/Linux%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8C%87%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux中基本的指令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2022-11-15 14:23:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="liuzheng's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic3.zhimg.com/80/v2-4b4538487fa02ff9c7212b1557ca4a08_720w.jpg?source=1940ef5c" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img0.baidu.com/it/u=2133930945,1694735085&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=651&amp;h=336')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">liuzheng's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux中基本的指令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-28T05:10:56.000Z" title="发表于 2022-10-28 13:10:56">2022-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-15T06:23:58.462Z" title="更新于 2022-11-15 14:23:58">2022-11-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux中基本的指令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一切皆文件"><a href="#一切皆文件" class="headerlink" title="一切皆文件"></a>一切皆文件</h1><p>Linux讲究的是一切皆文件，在Windows下是文件的东西，在Linux中也是，在Windows下不是文件的东西，比如套接字，进程，甚至是硬件设备，在Linux下还是文件，你可以通过访问文件的方式来获取它们的信息，所以说要记住Linux下一切皆文件。</p>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p><img src="0.jpg" alt="Linux目录结构"></p>
+<p>Linux目录结构十分重要，要熟练的掌握。接下来我们来看一看这些目录都是用来做什么的：</p>
+<ol>
+<li>/bin：bin是Binaries(二进制文件)的缩写，这个目录存放着最经常用的命令。</li>
+<li>/sbin：s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</li>
+<li>/home：存放普通用户的主目录，在Linux中每个用户都有一个自己的目录，一般该目录名是以用户的账号命名。</li>
+<li>/root：该目录为系统管理员，也称作超级权限者的用户主目录。</li>
+<li>/lib：系统开机所需要最基本的动态连接共享库，就类似于Windows下的DLL文件。几乎所有的应用程序都需要用到这些共享库</li>
+<li>/lost+found：这个目录是一个被隐藏的目录，一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</li>
+<li>/etc：所有的系统管理所需要的配置文件和子目录。</li>
+<li>/usr：这是一个非常重要的目录，用户很多的应用程序和文件都放在这个目录下，类似Windows的program files目录。</li>
+<li>/boot：存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</li>
+<li>/proc：这个目录是一个虚拟的目录，它是系统内存的映射，访问这个目录来获取系统信息。不要动它，可能导致系统崩溃。</li>
+<li>/srv：service缩写，该目录存放一些服务启动后需要提取的数据。不要动它，可能导致系统崩溃。</li>
+<li>/sys：这是Linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统sysfs。不要动它，可能导致系统崩溃。</li>
+<li>/tmp：用来存放一些临时文件。</li>
+<li>/dev：类似Windows的设备管理器，把所有的硬件用文件的形式存储。</li>
+<li>/media：Linux系统会自动识别一些设备，例如光驱，U盘等等，当识别后，Linux会把识别的设备挂载到这个目录下。</li>
+<li>/mnt：系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将外部的存储挂载在/mnt上，然后进入该目录就可以查看里面的内容了。</li>
+<li>/opt：这是主机额外安装软件用到的目录，默认为空。</li>
+<li>/user/local：这是另一个给主机额外安装软件所安装的目录，一般是通过编译源码方式安装的程序。</li>
+<li>/var：这个目录中存放着在不断扩充着的东西，习惯将经常被修改的目录放在这个目录下。包括各种日志文件。</li>
+<li>/selinux：SELinux是一种安全子系统，它能控制程序只访问特定文件，有三种工作模式，可自行设定。</li>
+</ol>
+<h1 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h1><p>想必你也感觉到了，我们到现在为止虽然好像没做什么，但大多数都用到了各种指令，没错linux下我们需要熟练的使用这些指令，这样才方便我们的工作，所以接下来我们要开始接触各种指令，但在此之前我们先了解一个重要的指令，帮助指令。</p>
+<p>第一个帮助指令是man [命令或配置文件]，比如man ls，我们可以通过这条指令知道ls命令是做什么的，以及它有没有其他的扩展选项，例如ls -a可以显示所有文件包括以“.”开头的隐藏文件。如果帮助信息很多没有显示完，可以使用space(空格键)翻页。（Tips：ls指令的选项可以叠加使用比如ls -la，单列显示所有文件，la选项不区分先后关系，也可以为al。）</p>
+<p><img src="1.jpg" alt="man ls"></p>
+<p>第二个帮助指令时help 命令，它可以获得shell内置命令的帮助信息。比如help cd。</p>
+<p><img src="2.jpg" alt="help cd"></p>
+<h1 id="文件目录指令"><a href="#文件目录指令" class="headerlink" title="文件目录指令"></a>文件目录指令</h1><p>Linux下一切皆文件，所以我们要想成为高手，就要知道怎么操作文件，所以我们接下来了解一下文件目录指令。</p>
+<h2 id="pwd指令"><a href="#pwd指令" class="headerlink" title="pwd指令"></a>pwd指令</h2><p>基本语法：pwd，用来显示当前工作目录的绝对路径。</p>
+<p><img src="3.jpg" alt="pwd指令"></p>
+<h2 id="ls指令"><a href="#ls指令" class="headerlink" title="ls指令"></a>ls指令</h2><p>基本语法：ls [选项] [目录或是文件]，用来显示当前目录文件。</p>
+<p>常用选项：-a，显示当前目录所有文件和目录，包括隐藏的。-l，以列表的方式显示信息，信息会展示的更为全面。</p>
+<p><img src="4.jpg" alt="ls指令"></p>
+<h2 id="cd指令"><a href="#cd指令" class="headerlink" title="cd指令"></a>cd指令</h2><p>基本语法：cd [参数]，用来切换到指定目录</p>
+<p>cd~或cd，回到自己的家目录 cd..回到当前目录的上一级目录</p>
+<p><img src="5.jpg" alt="cd指令"></p>
+<h2 id="mkdir指令"><a href="#mkdir指令" class="headerlink" title="mkdir指令"></a>mkdir指令</h2><p>基本语法：mkdir [选项] 要创建的目录，用来创建目录</p>
+<p>常用选项：-p，创建多级目录</p>
+<p><img src="6.jpg" alt="mkdir指令"></p>
+<h2 id="rmdir指令"><a href="#rmdir指令" class="headerlink" title="rmdir指令"></a>rmdir指令</h2><p>基本语法：rmdir（或rm） [选项] 要删除的空目录，用来删除目录</p>
+<p>注意，因为rmdir删除的是空目录，如果目录下有内容是无法删除的，这个时候要使用rm -rf删除。</p>
+<p><img src="7.jpg" alt="rmdir指令和rm -rf"></p>
+<h2 id="touch指令"><a href="#touch指令" class="headerlink" title="touch指令"></a>touch指令</h2><p>基本语法：touch 文件名称，用来创建空文件</p>
+<p><img src="8.jpg" alt="touch指令"></p>
+<h2 id="cp指令"><a href="#cp指令" class="headerlink" title="cp指令"></a>cp指令</h2><p>基本语法：cp [选项] 文件夹(或文件) 目的地址，用来拷贝文件到指定目录</p>
+<p>常用选项：-r 递归复制整个文件夹</p>
+<p><img src="9.jpg" alt="cp指令"></p>
+<p>当我们重复的将一个文件(文件夹)复制到同一个目录时，就会发生覆盖，这个时候我们需要输入y才可以覆盖文件。当然我们也可以使用\cp [选项] 文件夹(或文件) 目的地址，强制覆盖。</p>
+<p><img src="10.jpg" alt="cp指令覆盖问题"></p>
+<h2 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h2><p>基本语法：rm [选项] 要删除的文件或目录，用来移除文件或目录</p>
+<p>常用选项：-r：递归删除整个文件夹。-f：强制删除不提示</p>
+<p><img src="11.jpg" alt="rm指令"></p>
+<h2 id="mv指令"><a href="#mv指令" class="headerlink" title="mv指令"></a>mv指令</h2><p>基本语法：</p>
+<p>mv oldfilename newfilename，用来重命名</p>
+<p>mv 文件(文件夹)路径 目的路径，用来移动文件</p>
+<p><img src="12.jpg" alt="mv指令"></p>
+<p>我们也可以在移动文件的同时修改文件名称。</p>
+<h2 id="cat指令"><a href="#cat指令" class="headerlink" title="cat指令"></a>cat指令</h2><p>基本语法：cat [选项] 要查看的文件，用来查看文件内容</p>
+<p>常用选项：-n：显示行号</p>
+<p><img src="13.jpg" alt="cat指令"></p>
+<p>当然文件往往都有很多行所以为了方便浏览，我们可以加上管道指令|more，例如 cat -n pig.txt |more。</p>
+<h2 id="more指令"><a href="#more指令" class="headerlink" title="more指令"></a>more指令</h2><p>基本语法：more 要查看的文件</p>
+<p>more指令是一个基于vi编辑器的文本过滤器，它以全屏幕的方式按页显示文本文件的内容。more指令中内置了若干个快捷键。如下图：</p>
+<p><img src="14.jpg" alt="more指令快捷键"></p>
+<h2 id="less指令"><a href="#less指令" class="headerlink" title="less指令"></a>less指令</h2><p>基本语法：less 要查看的文件</p>
+<p>less指令用分屏来查看文件内容，它和more类似，当比more更为强大，less对显示大型文件具有较高的效率。</p>
+<p>less相较于more而言，还可以使用/ 关键词来进行搜索，输入n向前查找下一个匹配的文本，输入N向后查找前一个匹配的文本。</p>
+<h2 id="echo指令"><a href="#echo指令" class="headerlink" title="echo指令"></a>echo指令</h2><p>基本语法：echo [选项] [输出内容]，用来输出内容到控制台</p>
+<p><img src="15.jpg" alt="echo指令"></p>
+<h2 id="head指令"><a href="#head指令" class="headerlink" title="head指令"></a>head指令</h2><p>基本语法：</p>
+<p>head 文件，用来显示文件开头部分，默认为头10行</p>
+<p>head -n 5 文件，用来查看文件头5行内容，5是变数 </p>
+<p><img src="16.jpg" alt="head指令"></p>
+<h2 id="gt-指令和-gt-gt-指令"><a href="#gt-指令和-gt-gt-指令" class="headerlink" title="&gt;指令和&gt;&gt;指令"></a>&gt;指令和&gt;&gt;指令</h2><p>基本语法：</p>
+<p>ls -l&gt;文件，列表的内容写入文件中(覆盖写)</p>
+<p>ls -al&gt;&gt;文件，列表的内容追加到文件的末尾</p>
+<p>cat 文件1&gt;文件2，将文件1的内容覆盖到文件2</p>
+<p>echo “内容”&gt;&gt;文件，将内容写入文件</p>
+<h2 id="tail指令"><a href="#tail指令" class="headerlink" title="tail指令"></a>tail指令</h2><p>基本语法：</p>
+<p>tail 文件，查看文件尾内容，默认为10行</p>
+<p>tail -n 5 文件，查看文件尾5行内容，5是变数</p>
+<p>tail -f 文件，实时追踪该文档的所有更新，指令执行后监控文件，有新内容写入后立马显示。</p>
+<p><img src="17.jpg" alt="tail指令"></p>
+<h2 id="ln指令"><a href="#ln指令" class="headerlink" title="ln指令"></a>ln指令</h2><p>基本语法：ln -s [原文件或目录] [软链接名]，用来给文件创建一个软链接</p>
+<p>软链接就类似于Windows下的快捷方式，我们为一个文件或目录创造一个软链接，当我们访问这个软链接时就相当于访问原文件或目录。</p>
+<p><img src="18.jpg" alt="ln指令"></p>
+<p>我们可以看到虽然我们通过软链接进入了原文件中，但路径还是软链接的路径，这点要注意。如果我们不想要这个软链接了，我们可以使用rm删除它。</p>
+<h2 id="history指令"><a href="#history指令" class="headerlink" title="history指令"></a>history指令</h2><p>基本语法：history，用来查看已经执行过的历史指令。</p>
+<p>你也可以在history后加上一个数字，显示你想显示的后几条指令，比如history 10会显示后十条指令。输入！标号，就可以标号对应指令。</p>
+<p><img src="19.jpg" alt="history指令"></p>
+<h1 id="时间日期指令"><a href="#时间日期指令" class="headerlink" title="时间日期指令"></a>时间日期指令</h1><p>Linux中还有其他功能的指令，比如时间日期指令</p>
+<h2 id="date指令"><a href="#date指令" class="headerlink" title="date指令"></a>date指令</h2><p>基本语法：</p>
+<p>date，显示当前时间</p>
+<p>date “+%Y”，显示当前年份</p>
+<p>date “+%m”，显示当前月份</p>
+<p>date “+%d”，显示当前是哪一天</p>
+<p>date “+%Y-%m-%d %H:%M:%S”，显示年月日时分秒</p>
+<p>注意，这里指令的大小写是规定好的，一定要按照上述大小写输入。</p>
+<p><img src="20.jpg" alt="date指令"></p>
+<h2 id="date-s指令"><a href="#date-s指令" class="headerlink" title="date -s指令"></a>date -s指令</h2><p>基本语法：date -s 时间(字符串)</p>
+<p>我们可以使用这个指令修改当前系统的时间。</p>
+<h2 id="cal指令"><a href="#cal指令" class="headerlink" title="cal指令"></a>cal指令</h2><p>基本语法：cal [选项]</p>
+<p>选项：-m：显示星期一作为一周的第一天，-y：显示当前年份的日历。</p>
+<p><img src="21.jpg" alt="cal指令"></p>
+<p>还可以使用cal+年份，显示指定年份的日历。</p>
+<h1 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h1><p>我们在使用Linux的过程中，使用查找指令可以大大的方便我们的工作。</p>
+<h2 id="find指令"><a href="#find指令" class="headerlink" title="find指令"></a>find指令</h2><p>基本语法：find [搜索范围] [选项]，用来从指定目录下递归地遍历其各个子目录，将满足条件的显示在终端。</p>
+<p>选项：-name&lt;查询方式&gt;，按照指定的用户名查找模式查找文件。-user&lt;用户名&gt;，查找属于指定用户名所有文件。-size&lt;文件大小&gt;，按照指定的文件大小查找文件。</p>
+<p><img src="22.jpg" alt="find指令"></p>
+<h2 id="locate指令"><a href="#locate指令" class="headerlink" title="locate指令"></a>locate指令</h2><p>基本语法：locate 搜索文件，同样是用来查找文件的，但是locate指令可以快速定位文件路径。</p>
+<p>注意，由于locate指令基于数据库进行查询，所以第一次运行前，要使用updatedb指令创造locate数据库。</p>
+<p><img src="23.jpg" alt="locate指令"></p>
+<h2 id="grep指令和管道符号"><a href="#grep指令和管道符号" class="headerlink" title="grep指令和管道符号|"></a>grep指令和管道符号|</h2><p>基本语法：grep [选项] 查找内容 源文件，用于过滤查找。管道符“|”表示将前一个命令的处理结果输出传递给后面的命令处理。两者多联合使用。</p>
+<p>选项：-n：显示匹配行及行号。-i忽略字母大小写。</p>
+<p><img src="24.jpg" alt="grep指令和|"></p>
+<h2 id="which指令"><a href="#which指令" class="headerlink" title="which指令"></a>which指令</h2><p>基本语法：which 可执行文件名称，用来查看可执行文件的位置</p>
+<p><img src="25.jpg" alt="which指令"></p>
+<h1 id="压缩和解压指令"><a href="#压缩和解压指令" class="headerlink" title="压缩和解压指令"></a>压缩和解压指令</h1><p>我们在处理文件的时候也少不了压缩和解压的过程，Linux为我们提供了这样的指令。</p>
+<h2 id="gzip-gunzip指令"><a href="#gzip-gunzip指令" class="headerlink" title="gzip/gunzip指令"></a>gzip/gunzip指令</h2><p>基本语法：</p>
+<p>gzip 文件，用来压缩文件，只能将文件压缩为.gz格式</p>
+<p>gunzip 文件，用来解压缩文件</p>
+<p><img src="26.jpg" alt="gzip/gunzip指令"></p>
+<h2 id="zip-unzip指令"><a href="#zip-unzip指令" class="headerlink" title="zip/unzip指令"></a>zip/unzip指令</h2><p>基本语法：</p>
+<p>zip [选项] xxx.zip，用来压缩文件和目录</p>
+<p>unzip [选项] xxx.zip，用于解压缩文件</p>
+<p>zip常用选项：-r：递归压缩，即压缩目录</p>
+<p>unzip常用选项：-d&lt;目录&gt;：指定压缩后文件的存放位置</p>
+<p><img src="27.jpg" alt="zip/unzip指令"></p>
+<h2 id="tar指令"><a href="#tar指令" class="headerlink" title="tar指令"></a>tar指令</h2><p>基本语法：tar [选项] xxx.tar.gz 打包内容，用来打包目录</p>
+<p>选项：-c：产生.tar打包文件。-v：显示详细信息。-f：指定压缩后的文件名。-z：打包同时压缩。-x：解包.tar文件。</p>
+<p><img src="28.jpg" alt="tar指令"></p>
+<h1 id="vi和vim"><a href="#vi和vim" class="headerlink" title="vi和vim"></a>vi和vim</h1><p>我们知道Linux一切皆文件，文件大多数都应该是可以更改的，所以Linux系统内置了vi文本编辑器，vim也是一个文本编辑器，不过vim具有程序编辑的能力，可以看做是Vi的增强版本，可以主动以字体颜色辨别语法的正确性，方便程序设计。代码补完，编译以及错误跳转等功能丰富。</p>
+<h2 id="vi和vim常用的三种模式"><a href="#vi和vim常用的三种模式" class="headerlink" title="vi和vim常用的三种模式"></a>vi和vim常用的三种模式</h2><p>vi和vim有三种常用模式分别是正常模式、插入模式、命令行模式。</p>
+<p>首先是正常模式，以vim打开一个档案就直接进入了一般模式了。在这个模式中可以使用上下左右移动光标，删除字符，复制粘贴等操作处理文件数据。</p>
+<p>之后是插入模式，按下i，I，o，O，A，R，r都可以进入插入模式，但一般习惯按i，按esc可以退出插入模式，回到正常模式。</p>
+<p>最后是命令行模式，在正常模式下，当我们输入“：”就可以切换为命令模式，在这个模式中，可以提供你相关指令，完成读取、存盘、替换、离开vim、显示行号等动作。</p>
+<p><img src="29.jpg" alt="三种模式及切换方法"></p>
+<h2 id="vi和vim快捷键"><a href="#vi和vim快捷键" class="headerlink" title="vi和vim快捷键"></a>vi和vim快捷键</h2><p>首先是基本的复制与粘贴操作，我们在正常模式下敲击yy就可以拷贝当前行，之后按p就可以粘贴当前行了，如果需要多行复制可以敲击数字加yy比如敲击5yy就可以复制当前行向下5行。有复制粘贴就会有删除，还是在正常模式下按dd就可以删除当前行，同样也可以进行多行删除操作。同样我们还有撤销操作，在正常模式下按u即可撤销。</p>
+<p>我们还可以查找一个文本文件中的某个单词，我们在<strong>命令行模式</strong>下只需要使用“/关键字”，回车即可查找，输入n就是查找下一个。我们还可以使用<strong>“set nu”</strong>和<strong>“set nonu”</strong>显示和隐藏行号。我们也可以快速的转到最首行快捷键是gg，快速转到最末行<strong>G（shift+g）</strong>当然这个操作要在<strong>正常模式</strong>下进行。还有一个操作就是快速的转到某一行，比如我想转到20行只需要在正常模式下敲击<strong>2+0+shift+g</strong>即可，不过要注意的是<strong>20不要用键盘的小键盘输入</strong>。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">liu zheng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/28/Linux%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8C%87%E4%BB%A4/">http://example.com/2022/10/28/Linux中基本的指令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">liuzheng's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/28/Shell%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"><img class="prev-cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Shell编程快速入门</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/27/Linux%E4%B8%8B%E7%9A%84C++%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/"><img class="next-cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux下的C/C++开发配置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/27/Linux%E4%B8%8B%E7%9A%84C++%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/" title="Linux下的C&#x2F;C++开发配置"><img class="cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-27</div><div class="title">Linux下的C&#x2F;C++开发配置</div></div></a></div><div><a href="/2022/10/28/Linux%E4%B8%8B%E7%9A%84CC++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="Linux下的C&#x2F;C++程序设计"><img class="cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-28</div><div class="title">Linux下的C&#x2F;C++程序设计</div></div></a></div><div><a href="/2022/10/28/Shell%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Shell编程快速入门"><img class="cover" src="https://img0.baidu.com/it/u=2296607214,1927394135&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-28</div><div class="title">Shell编程快速入门</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic3.zhimg.com/80/v2-4b4538487fa02ff9c7212b1557ca4a08_720w.jpg?source=1940ef5c" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">liu zheng</div><div class="author-info__description">刘峥</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lzwanttctw" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:liuzhengtctw@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/20370023" target="_blank" title="bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://i.postimg.cc/HWQKSV26/74106108648aa0649c53a7c1599dbd3.jpg" target="_blank" title="weixin"><i class="fab fa-weixin"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=2942185796&amp;website=www.oicqzone.com" target="_blank" title="qq"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果阅读过程中遇到了问题，请及时评论或者留言，看到了会在第一时间给出回复。若未收到回复，可以加博主vx，方便日后咨询，加以技术讨论。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%88%87%E7%9A%86%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">一切皆文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">帮助指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">文件目录指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pwd%E6%8C%87%E4%BB%A4"><span class="toc-number">4.1.</span> <span class="toc-text">pwd指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ls%E6%8C%87%E4%BB%A4"><span class="toc-number">4.2.</span> <span class="toc-text">ls指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cd%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.</span> <span class="toc-text">cd指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkdir%E6%8C%87%E4%BB%A4"><span class="toc-number">4.4.</span> <span class="toc-text">mkdir指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rmdir%E6%8C%87%E4%BB%A4"><span class="toc-number">4.5.</span> <span class="toc-text">rmdir指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch%E6%8C%87%E4%BB%A4"><span class="toc-number">4.6.</span> <span class="toc-text">touch指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp%E6%8C%87%E4%BB%A4"><span class="toc-number">4.7.</span> <span class="toc-text">cp指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rm%E6%8C%87%E4%BB%A4"><span class="toc-number">4.8.</span> <span class="toc-text">rm指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mv%E6%8C%87%E4%BB%A4"><span class="toc-number">4.9.</span> <span class="toc-text">mv指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cat%E6%8C%87%E4%BB%A4"><span class="toc-number">4.10.</span> <span class="toc-text">cat指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more%E6%8C%87%E4%BB%A4"><span class="toc-number">4.11.</span> <span class="toc-text">more指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less%E6%8C%87%E4%BB%A4"><span class="toc-number">4.12.</span> <span class="toc-text">less指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#echo%E6%8C%87%E4%BB%A4"><span class="toc-number">4.13.</span> <span class="toc-text">echo指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#head%E6%8C%87%E4%BB%A4"><span class="toc-number">4.14.</span> <span class="toc-text">head指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-%E6%8C%87%E4%BB%A4%E5%92%8C-gt-gt-%E6%8C%87%E4%BB%A4"><span class="toc-number">4.15.</span> <span class="toc-text">&gt;指令和&gt;&gt;指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tail%E6%8C%87%E4%BB%A4"><span class="toc-number">4.16.</span> <span class="toc-text">tail指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln%E6%8C%87%E4%BB%A4"><span class="toc-number">4.17.</span> <span class="toc-text">ln指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#history%E6%8C%87%E4%BB%A4"><span class="toc-number">4.18.</span> <span class="toc-text">history指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">时间日期指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#date%E6%8C%87%E4%BB%A4"><span class="toc-number">5.1.</span> <span class="toc-text">date指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#date-s%E6%8C%87%E4%BB%A4"><span class="toc-number">5.2.</span> <span class="toc-text">date -s指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cal%E6%8C%87%E4%BB%A4"><span class="toc-number">5.3.</span> <span class="toc-text">cal指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">查找指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E6%8C%87%E4%BB%A4"><span class="toc-number">6.1.</span> <span class="toc-text">find指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#locate%E6%8C%87%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">locate指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep%E6%8C%87%E4%BB%A4%E5%92%8C%E7%AE%A1%E9%81%93%E7%AC%A6%E5%8F%B7"><span class="toc-number">6.3.</span> <span class="toc-text">grep指令和管道符号|</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which%E6%8C%87%E4%BB%A4"><span class="toc-number">6.4.</span> <span class="toc-text">which指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">压缩和解压指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gzip-gunzip%E6%8C%87%E4%BB%A4"><span class="toc-number">7.1.</span> <span class="toc-text">gzip&#x2F;gunzip指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip-unzip%E6%8C%87%E4%BB%A4"><span class="toc-number">7.2.</span> <span class="toc-text">zip&#x2F;unzip指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar%E6%8C%87%E4%BB%A4"><span class="toc-number">7.3.</span> <span class="toc-text">tar指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vi%E5%92%8Cvim"><span class="toc-number">8.</span> <span class="toc-text">vi和vim</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vi%E5%92%8Cvim%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.1.</span> <span class="toc-text">vi和vim常用的三种模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi%E5%92%8Cvim%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">8.2.</span> <span class="toc-text">vi和vim快捷键</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%9F%E9%82%A3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" title="套接字编程？那是什么？"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdnimg.cn%2Fimg_convert%2F41118985a459ddd1e554d49befd32ed4.png&amp;refer=http%3A%2F%2Fimg-blog.csdnimg.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1671247698&amp;t=505c129a08936f0890ff8fbce0d99868" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="套接字编程？那是什么？"/></a><div class="content"><a class="title" href="/2022/11/17/%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%9F%E9%82%A3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" title="套接字编程？那是什么？">套接字编程？那是什么？</a><time datetime="2022-11-17T03:06:03.000Z" title="发表于 2022-11-17 11:06:03">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/CC++%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" title="C/C++后端开发基础"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.oschina.net%2Fuploads%2Fimg%2F201304%2F12074733_81Xw.jpg&amp;refer=http%3A%2F%2Fstatic.oschina.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1668751513&amp;t=af01ea44597aa8d7fde5914d76f51af2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C/C++后端开发基础"/></a><div class="content"><a class="title" href="/2022/11/15/CC++%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" title="C/C++后端开发基础">C/C++后端开发基础</a><time datetime="2022-11-15T06:28:42.000Z" title="发表于 2022-11-15 14:28:42">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/Linux%E4%B8%8B%E7%9A%84CC++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="Linux下的C/C++程序设计"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux下的C/C++程序设计"/></a><div class="content"><a class="title" href="/2022/10/28/Linux%E4%B8%8B%E7%9A%84CC++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="Linux下的C/C++程序设计">Linux下的C/C++程序设计</a><time datetime="2022-10-28T07:54:37.000Z" title="发表于 2022-10-28 15:54:37">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/Shell%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Shell编程快速入门"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shell编程快速入门"/></a><div class="content"><a class="title" href="/2022/10/28/Shell%E7%BC%96%E7%A8%8B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Shell编程快速入门">Shell编程快速入门</a><time datetime="2022-10-28T05:33:44.000Z" title="发表于 2022-10-28 13:33:44">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/Linux%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8C%87%E4%BB%A4/" title="Linux中基本的指令"><img src="https://img0.baidu.com/it/u=2296607214,1927394135&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux中基本的指令"/></a><div class="content"><a class="title" href="/2022/10/28/Linux%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8C%87%E4%BB%A4/" title="Linux中基本的指令">Linux中基本的指令</a><time datetime="2022-10-28T05:10:56.000Z" title="发表于 2022-10-28 13:10:56">2022-10-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://img0.baidu.com/it/u=2133930945,1694735085&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=651&amp;h=336')"><div id="footer-wrap"><div class="copyright">&copy;2022 By liu zheng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">半山腰总是最挤的，你得去山顶看看。<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'M4HnCHqwI8V007LMAwy1AXOC-gzGzoHsz',
+      appKey: 'N2NNh2Ahgn18g90Q244XUdc2',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
